@@ -2,9 +2,17 @@ from __future__ import annotations
 import datetime as dt
 from dataclasses import dataclass, field
 
+# NOTE -
 # Create a subscription dictionary to store all possible events
 # This allows external class to use this dictionary to call function
 # rather than having direct dependency with another class
+
+# In general, a pub-sub approach do the following:
+# 1. the Handler class generate a subscription by putting its functional entry point
+# 2. the Publisher/ users pick the subscribed function from the dictionary and pass in data
+# 3. the Subscribers invoke the function using the data
+# 4. the function triggers the logics stored within the Handler
+
 subs = dict()
 
 
