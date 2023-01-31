@@ -1,6 +1,19 @@
-# A hero factory is a selection layer on which Superhero to assign
-from abstract_classes import HeroFactory
+from abc import ABC, abstractmethod
+from typing import Dict
 import superheros
+
+
+# A hero factory is a selection layer on which Superhero to assign
+class HeroFactory(ABC):
+    @property
+    @abstractmethod
+    def preference_map(self) -> Dict[str, superheros.Superhero]:
+        NotImplementedError
+
+    def create_hero(self, preference: str) -> superheros.Superhero:
+        # retrieve the Superhero are create an instance of it
+        return self.preference_map.get(preference)()
+
 
 # DC Verse HeroFactory
 class DCHeroFactory(HeroFactory):

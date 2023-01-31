@@ -1,4 +1,15 @@
-from abstract_classes import Superhero
+from abc import ABC, abstractmethod
+
+
+class Superhero(ABC):
+    @property
+    @abstractmethod
+    def name(self):
+        NotImplementedError
+
+    @abstractmethod
+    def use_ability(self):
+        NotImplementedError
 
 
 # various kind of concrete Superheroes from DC verse
@@ -36,7 +47,7 @@ class DoctorStrange(Superhero):
         return "Doctor Strange"
 
     def use_ability(self):
-        return "use magic"
+        return "magic"
 
 
 class Hulk(Superhero):
